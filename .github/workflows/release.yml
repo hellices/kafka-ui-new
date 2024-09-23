@@ -1,6 +1,11 @@
 name: "Infra: Release"
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to use'  # 파라미터 설명
+        required: true                 # 필수값 여부
+        default: '1.0.0'               # 기본값
 
 permissions:
   contents: read
@@ -34,7 +39,7 @@ jobs:
       - name: Build with Maven
         id: build
         run: |
-          ./mvnw -B -ntp versions:set -DnewVersion=${{ github.event.release.tag_name }}
+          ./mvnw -B -ntp versions:set -DnewVersion=${{ github.event.inputs.version }}
           ./mvnw -B -V -ntp clean package -Pprod -DskipTests
           export VERSION=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
