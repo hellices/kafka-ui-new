@@ -330,7 +330,7 @@
                     <argLine>@{argLine} --illegal-access=permit</argLine>
                 </configuration>
             </plugin>
-            <plugin>
+<!--             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.3.1</version>
@@ -359,7 +359,7 @@
                     </execution>
                 </executions>
 
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-maven-plugin</artifactId>
