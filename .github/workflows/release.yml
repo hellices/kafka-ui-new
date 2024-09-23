@@ -44,18 +44,18 @@ jobs:
           export VERSION=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
 
-      - name: Upload files to a GitHub release
-        uses: svenstaro/upload-release-action@2.9.0
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: api/target/api-${{ steps.build.outputs.version }}.jar
-          tag: ${{ github.event.release.tag_name }}
+      # - name: Upload files to a GitHub release
+      #   uses: svenstaro/upload-release-action@2.9.0
+      #   with:
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #     file: api/target/api-${{ steps.build.outputs.version }}.jar
+      #     tag: ${{ github.event.release.tag_name }}
 
-      - name: Archive JAR
-        uses: actions/upload-artifact@v4
-        with:
-          name: kafbat-ui-new-${{ steps.build.outputs.version }}
-          path: api/target/api-${{ steps.build.outputs.version }}.jar
+      # - name: Archive JAR
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: kafbat-ui-new-${{ steps.build.outputs.version }}
+      #     path: api/target/api-${{ steps.build.outputs.version }}.jar
       #################
       #               #
       # Docker images #
